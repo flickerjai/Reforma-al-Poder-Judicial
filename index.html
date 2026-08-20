@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Así buscan reformar el Poder Judicial siete proyectos de PPSO</title>
+<style>
+  :root{
+    --ln-blue:#014a80;
+    --ln-blue-dark:#00365e;
+    --ln-blue-soft:#eaf3f9;
+    --ink:#151515;
+    --muted:#5f6670;
+    --line:#d9dee3;
+    --bg:#ffffff;
+    --panel:#f7f8fa;
+    --high:#014a80;
+    --medium:#6d7d89;
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,sans-serif}
+  body{padding:0}
+
+  .wrap{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:22px 18px 18px;
+  }
+
+  .eyebrow{
+    color:var(--ln-blue);
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    margin-bottom:7px;
+  }
+
+  h1{
+    margin:0;
+    font-size:clamp(25px,3.3vw,42px);
+    line-height:1.05;
+    letter-spacing:-.025em;
+  }
+
+  .deck{
+    margin:10px 0 0;
+    max-width:940px;
+    color:#333;
+    font-size:clamp(15px,1.7vw,19px);
+    line-height:1.45;
+  }
+
+  .tabs-intro{
+    margin:20px 0 8px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+  }
+
+  .hint{
+    margin:0;
+    color:var(--muted);
+    font-size:13px;
+  }
+
+  .swipe-hint{
+    color:var(--ln-blue);
+    font-size:13px;
+    font-weight:800;
+    white-space:nowrap;
+    transition:opacity .2s ease;
+  }
+
+  .tabs-shell{
+    position:relative;
+    padding:0 34px;
+  }
+
+  .tabs-shell::after{
+    content:"";
+    position:absolute;
+    top:0;
+    right:34px;
+    width:52px;
+    height:calc(100% - 10px);
+    pointer-events:none;
+    background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.96));
+    opacity:1;
+    transition:opacity .2s ease;
+  }
+
+  .tabs-shell.at-end::after{opacity:0}
+
+  .tabs{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding:2px 2px 10px;
+    scrollbar-width:none;
+    scroll-behavior:smooth;
+  }
+  .tabs::-webkit-scrollbar{display:none}
+
+  .scroll-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(calc(-50% - 5px));
+    z-index:3;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    border:1px solid #b9c5cf;
+    background:#fff;
+    color:var(--ln-blue);
+    font-size:24px;
+    line-height:1;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+  }
+  .scroll-btn.left{left:0}
+  .scroll-btn.right{right:0}
+  .scroll-btn:disabled{
+    opacity:.25;
+    cursor:default;
+  }
+
+  .tab{
+    flex:0 0 auto;
+    border:1px solid #b9c5cf;
+    background:#fff;
+    color:var(--ln-blue-dark);
+    border-radius:999px;
+    padding:10px 14px;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.18s ease;
+    white-space:nowrap;
+  }
+  .tab:hover{border-color:var(--ln-blue);background:var(--ln-blue-soft)}
+  .tab.active{
+    background:var(--ln-blue);
+    color:#fff;
+    border-color:var(--ln-blue);
+  }
+
+  .card{
+    margin-top:4px;
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 8px 24px rgba(0,0,0,.045);
+  }
+
+  .card-head{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    gap:18px;
+    align-items:center;
+    background:linear-gradient(90deg,var(--ln-blue-soft),#fff 65%);
+    padding:20px 22px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .exp{
+    color:var(--ln-blue);
+    font-size:13px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    margin-bottom:4px;
+  }
+  .topic{
+    font-size:clamp(22px,2.6vw,32px);
+    font-weight:800;
+    line-height:1.1;
+  }
+
+  .badge{
+    align-self:start;
+    border-radius:999px;
+    padding:8px 12px;
+    font-weight:800;
+    font-size:13px;
+    white-space:nowrap;
+    border:1px solid currentColor;
+  }
+
+  .badge.alto{color:var(--ln-blue);background:#f2f8fc}
+  .badge.medio-alto{color:#355b72;background:#f4f7f9}
+  .badge.medio{color:#5d6770;background:#f7f7f7}
+  .badge.bajo{color:#6c747a;background:#fafafa}
+
+  .grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .cell{
+    padding:22px;
+    min-height:190px;
+  }
+  .cell + .cell{border-left:1px solid var(--line)}
+
+  .label{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:10px;
+    color:var(--ln-blue);
+    font-size:14px;
+    font-weight:800;
+  }
+
+  .num{
+    display:inline-grid;
+    place-items:center;
+    width:25px;height:25px;
+    border-radius:50%;
+    background:var(--ln-blue);
+    color:#fff;
+    font-size:12px;
+    flex:0 0 auto;
+  }
+
+  .text{
+    font-size:clamp(17px,1.75vw,21px);
+    line-height:1.48;
+  }
+
+  .progress{
+    margin:18px 22px 20px;
+    height:4px;
+    background:#e6e9ec;
+    border-radius:999px;
+    overflow:hidden;
+  }
+  .progress > div{
+    height:100%;
+    background:var(--ln-blue);
+    transition:width .25s ease;
+  }
+
+  .counter{
+    margin:0 22px 22px;
+    color:var(--muted);
+    font-size:12px;
+    text-align:right;
+  }
+
+  .source{
+    margin-top:12px;
+    color:#777;
+    font-size:11px;
+    line-height:1.35;
+  }
+
+  @media (max-width:700px){
+    .wrap{padding:16px 12px 14px}
+    .card-head{grid-template-columns:1fr;gap:10px;padding:18px}
+    .badge{justify-self:start}
+    .grid{grid-template-columns:1fr}
+    .cell{min-height:auto;padding:18px}
+    .cell + .cell{border-left:none;border-top:1px solid var(--line)}
+    .tabs-intro{margin-top:16px;align-items:flex-end}
+    .tabs-shell{padding:0 30px}
+    .tabs-shell::after{right:30px;width:42px}
+    .scroll-btn{width:27px;height:27px;font-size:21px}
+    .swipe-hint{font-size:12px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Poder Judicial</div>
+  <h1>Así buscan reformar el Poder Judicial siete proyectos de PPSO</h1>
+  <p class="deck">Explore, proyecto por proyecto, qué propone cada iniciativa y cuál sería su principal efecto dentro del Poder Judicial.</p>
+
+  <div class="tabs-intro">
+    <p class="hint">Seleccione un expediente para ver los cambios planteados.</p>
+    <span class="swipe-hint" id="swipeHint">Hay más proyectos <span aria-hidden="true">→</span></span>
+  </div>
+
+  <div class="tabs-shell">
+    <button class="scroll-btn left" id="scrollLeft" aria-label="Ver proyectos anteriores">‹</button>
+    <div class="tabs" id="tabs" role="tablist" aria-label="Proyectos de ley"></div>
+    <button class="scroll-btn right" id="scrollRight" aria-label="Ver más proyectos">›</button>
+  </div>
+
+  <section class="card" aria-live="polite">
+    <div class="card-head">
+      <div>
+        <div class="exp" id="exp"></div>
+        <div class="topic" id="topic"></div>
+      </div>
+      <div class="badge" id="badge"></div>
+    </div>
+
+    <div class="grid">
+      <div class="cell">
+        <div class="label"><span class="num">1</span>¿Qué propone?</div>
+        <div class="text" id="proposal"></div>
+      </div>
+      <div class="cell">
+        <div class="label"><span class="num">2</span>¿Qué cambia en el Poder Judicial?</div>
+        <div class="text" id="change"></div>
+      </div>
+    </div>
+
+    <div class="progress"><div id="progressbar"></div></div>
+    <div class="counter" id="counter"></div>
+  </section>
+
+  <div class="source">Fuente: proyectos presentados por diputados de Pueblo Soberano.</div>
+</div>
+
+<script>
+const projects = [
+  {
+    exp:"25 632",
+    topic:"Magistrados suplentes",
+    proposal:"Establece restricciones al ejercicio privado de la abogacía y el notariado para magistrados suplentes y regula incompatibilidades.",
+    change:"Endurece las reglas aplicables a magistrados suplentes para prevenir conflictos de interés.",
+    reach:"Medio"
+  },
+  {
+    exp:"25 634",
+    topic:"Fiscalía General",
+    proposal:"Traslada de Corte Plena a la Asamblea Legislativa la elección del fiscal general y fiscal subrogante. También incorpora rendición de cuentas y mecanismos de remoción.",
+    change:"Corte Plena pierde la elección de la cabeza del Ministerio Público y el Congreso asume esa potestad.",
+    reach:"Alto"
+  },
+  {
+    exp:"25 678",
+    topic:"Pensiones judiciales",
+    proposal:"Permite a trabajadores judiciales escoger entre permanecer en el Fondo de Jubilaciones y Pensiones del Poder Judicial o trasladarse al IVM.",
+    change:"Permite la salida voluntaria del régimen judicial hacia el IVM.",
+    reach:"Medio-alto"
+  },
+  {
+    exp:"25 679",
+    topic:"Pensiones judiciales",
+    proposal:"Modifica el traslado de cotizaciones del Fondo Judicial hacia otros regímenes para reconocer también los rendimientos generados por esos recursos.",
+    change:"Cambia las reglas financieras para el traslado de recursos desde el Fondo Judicial.",
+    reach:"Medio"
+  },
+  {
+    exp:"25 687",
+    topic:"Gobierno judicial",
+    proposal:"Traslada buena parte de las funciones administrativas, presupuestarias, disciplinarias y de gestión de Corte Plena al Consejo Superior.",
+    change:"Redistribuye funciones dentro del Poder Judicial y reduce la participación administrativa de los magistrados.",
+    reach:"Alto"
+  },
+  {
+    exp:"25 693",
+    topic:"Magistrados suplentes",
+    proposal:"Elimina la participación de Corte Plena en la preselección de magistrados suplentes y concentra el procedimiento en la Asamblea Legislativa.",
+    change:"El Congreso asumiría la convocatoria, evaluación y elección de los suplentes.",
+    reach:"Alto"
+  },
+  {
+    exp:"25 694",
+    topic:"Magistrados propietarios",
+    proposal:"Establece un único periodo de 15 años sin reelección, eleva la edad mínima a 45 años y exige 20 años de ejercicio profesional.",
+    change:"Cambia constitucionalmente las reglas de permanencia, requisitos y renovación de los magistrados de la Corte Suprema.",
+    reach:"Alto"
+  }
+];
+
+const tabs = document.getElementById("tabs");
+const exp = document.getElementById("exp");
+const topic = document.getElementById("topic");
+const proposal = document.getElementById("proposal");
+const change = document.getElementById("change");
+const badge = document.getElementById("badge");
+const counter = document.getElementById("counter");
+const progressbar = document.getElementById("progressbar");
+
+let current = 0;
+
+const tabsEl = document.getElementById("tabs");
+const shell = document.querySelector(".tabs-shell");
+const leftBtn = document.getElementById("scrollLeft");
+const rightBtn = document.getElementById("scrollRight");
+const swipeHint = document.getElementById("swipeHint");
+
+function updateScroller(){
+  const maxScroll = tabsEl.scrollWidth - tabsEl.clientWidth;
+  const atStart = tabsEl.scrollLeft <= 3;
+  const atEnd = tabsEl.scrollLeft >= maxScroll - 3;
+
+  leftBtn.disabled = atStart;
+  rightBtn.disabled = atEnd || maxScroll <= 0;
+  shell.classList.toggle("at-end", atEnd || maxScroll <= 0);
+
+  if(maxScroll <= 0){
+    swipeHint.style.display = "none";
+  } else if(atEnd){
+    swipeHint.style.opacity = ".35";
+    swipeHint.innerHTML = 'Fin de los proyectos';
+  } else {
+    swipeHint.style.opacity = "1";
+    swipeHint.innerHTML = 'Hay más proyectos <span aria-hidden="true">→</span>';
+  }
+}
+
+leftBtn.addEventListener("click",()=>tabsEl.scrollBy({left:-Math.max(260,tabsEl.clientWidth*.65),behavior:"smooth"}));
+rightBtn.addEventListener("click",()=>tabsEl.scrollBy({left:Math.max(260,tabsEl.clientWidth*.65),behavior:"smooth"}));
+tabsEl.addEventListener("scroll", updateScroller, {passive:true});
+window.addEventListener("resize", updateScroller);
+
+
+function reachClass(value){
+  return value.toLowerCase().replace("á","a").replace("é","e").replace("í","i").replace("ó","o").replace("ú","u");
+}
+
+function render(index){
+  current = index;
+  const p = projects[index];
+  exp.textContent = "Expediente " + p.exp;
+  topic.textContent = p.topic;
+  proposal.textContent = p.proposal;
+  change.textContent = p.change;
+  badge.textContent = "Alcance " + p.reach;
+  badge.className = "badge " + reachClass(p.reach);
+  counter.textContent = (index + 1) + " de " + projects.length + " proyectos";
+  progressbar.style.width = ((index + 1) / projects.length * 100) + "%";
+
+  document.querySelectorAll(".tab").forEach((el,i)=>{
+    el.classList.toggle("active", i === index);
+    el.setAttribute("aria-selected", i === index ? "true" : "false");
+    el.tabIndex = i === index ? 0 : -1;
+  });
+}
+
+projects.forEach((p,i)=>{
+  const b = document.createElement("button");
+  b.className = "tab";
+  b.type = "button";
+  b.setAttribute("role","tab");
+  b.innerHTML = `<strong>${p.exp}</strong>&nbsp; · &nbsp;${p.topic}`;
+  b.addEventListener("click",()=>render(i));
+  b.addEventListener("keydown",(e)=>{
+    if(e.key==="ArrowRight") render((current+1)%projects.length);
+    if(e.key==="ArrowLeft") render((current-1+projects.length)%projects.length);
+  });
+  tabs.appendChild(b);
+});
+
+render(0);
+requestAnimationFrame(updateScroller);
+</script>
+</body>
+</html>
