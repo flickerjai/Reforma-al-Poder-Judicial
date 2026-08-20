@@ -143,6 +143,9 @@
     transition:.18s ease;
     white-space:nowrap;
   }
+  .tab-exp{font-weight:800}
+  .tab-topic{font-weight:700}
+
   .tab:hover{border-color:var(--ln-blue);background:var(--ln-blue-soft)}
   .tab.active{
     background:var(--ln-blue);
@@ -263,17 +266,165 @@
   }
 
   @media (max-width:700px){
-    .wrap{padding:16px 12px 14px}
-    .card-head{grid-template-columns:1fr;gap:10px;padding:18px}
-    .badge{justify-self:start}
-    .grid{grid-template-columns:1fr}
-    .cell{min-height:auto;padding:18px}
-    .cell + .cell{border-left:none;border-top:1px solid var(--line)}
-    .tabs-intro{margin-top:16px;align-items:flex-end}
-    .tabs-shell{padding:0 30px}
-    .tabs-shell::after{right:30px;width:42px}
-    .scroll-btn{width:27px;height:27px;font-size:21px}
-    .swipe-hint{font-size:12px}
+    html,body{
+      width:100%;
+      max-width:100%;
+      overflow-x:hidden;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:100%;
+      padding:16px 14px 14px;
+      overflow:hidden;
+    }
+
+    .eyebrow{
+      font-size:12px;
+      margin-bottom:8px;
+    }
+
+    h1{
+      font-size:32px;
+      line-height:1.04;
+      letter-spacing:-.03em;
+    }
+
+    .deck{
+      margin-top:12px;
+      font-size:17px;
+      line-height:1.42;
+    }
+
+    .tabs-intro{
+      margin:24px 0 10px;
+      display:block;
+    }
+
+    .hint{
+      font-size:13px;
+      line-height:1.35;
+      max-width:260px;
+    }
+
+    .swipe-hint,
+    .scroll-btn,
+    .tabs-shell::after{
+      display:none !important;
+    }
+
+    .tabs-shell{
+      padding:0;
+      width:100%;
+    }
+
+    .tabs{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:7px;
+      width:100%;
+      overflow:visible;
+      padding:0 0 14px;
+    }
+
+    .tab{
+      width:100%;
+      min-width:0;
+      padding:10px 5px;
+      border-radius:10px;
+      font-size:13px;
+      line-height:1;
+      text-align:center;
+      overflow:hidden;
+      white-space:nowrap;
+    }
+
+    .tab-topic,
+    .tab-sep{
+      display:none;
+    }
+
+    .card{
+      margin-top:0;
+      border-radius:14px;
+      box-shadow:none;
+    }
+
+    .card-head{
+      grid-template-columns:1fr;
+      gap:10px;
+      padding:17px 18px;
+      background:linear-gradient(90deg,var(--ln-blue-soft),#fff 92%);
+    }
+
+    .exp{
+      font-size:12px;
+      margin-bottom:5px;
+    }
+
+    .topic{
+      font-size:25px;
+      line-height:1.08;
+    }
+
+    .badge{
+      justify-self:start;
+      padding:7px 11px;
+      font-size:12px;
+    }
+
+    .grid{
+      grid-template-columns:1fr;
+    }
+
+    .cell{
+      min-height:auto;
+      padding:18px;
+    }
+
+    .cell + .cell{
+      border-left:none;
+      border-top:1px solid var(--line);
+    }
+
+    .label{
+      align-items:flex-start;
+      font-size:15px;
+      line-height:1.25;
+      margin-bottom:10px;
+    }
+
+    .num{
+      width:24px;
+      height:24px;
+      font-size:12px;
+      margin-top:-1px;
+    }
+
+    .text{
+      font-size:17px;
+      line-height:1.48;
+    }
+
+    .progress{
+      margin:14px 18px 14px;
+    }
+
+    .counter{
+      margin:0 18px 16px;
+      font-size:11px;
+    }
+
+    .source{
+      margin-top:10px;
+      font-size:10px;
+    }
+  }
+
+  @media (max-width:380px){
+    h1{font-size:29px}
+    .deck{font-size:16px}
+    .tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
   }
 </style>
 </head>
@@ -445,7 +596,7 @@ projects.forEach((p,i)=>{
   b.className = "tab";
   b.type = "button";
   b.setAttribute("role","tab");
-  b.innerHTML = `<strong>${p.exp}</strong>&nbsp; · &nbsp;${p.topic}`;
+  b.innerHTML = `<span class="tab-exp">${p.exp}</span><span class="tab-sep"> · </span><span class="tab-topic">${p.topic}</span>`;
   b.addEventListener("click",()=>render(i));
   b.addEventListener("keydown",(e)=>{
     if(e.key==="ArrowRight") render((current+1)%projects.length);
