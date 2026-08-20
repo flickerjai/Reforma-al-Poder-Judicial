@@ -589,6 +589,18 @@ function render(index){
     el.setAttribute("aria-selected", i === index ? "true" : "false");
     el.tabIndex = i === index ? 0 : -1;
   });
+
+  // Centra automáticamente el proyecto seleccionado dentro del carrusel.
+  const activeTab = document.querySelector(".tab.active");
+  if (activeTab && window.innerWidth > 700) {
+    requestAnimationFrame(() => {
+      activeTab.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "center"
+      });
+    });
+  }
 }
 
 projects.forEach((p,i)=>{
