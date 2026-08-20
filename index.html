@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- VERSION: BARRA-MOVIL-CENTRADA-V2-900PX-2026-08-20 -->
+<!-- VERSION: RESPONSIVE-FINAL-V2-BADGE-RIGHT-DESKTOP-2026-08-20 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -379,8 +379,8 @@
     }
 
     .card-head{
-      grid-template-columns:1fr;
-      gap:10px;
+      grid-template-columns:minmax(0,1fr) auto;
+      gap:14px;
       padding:17px 18px;
       background:linear-gradient(90deg,var(--ln-blue-soft),#fff 92%);
     }
@@ -396,23 +396,24 @@
     }
 
     .badge{
-      justify-self:start;
+      justify-self:end;
+      align-self:start;
       padding:7px 11px;
       font-size:12px;
     }
 
     .grid{
-      grid-template-columns:1fr;
+      grid-template-columns:1fr 1fr;
     }
 
     .cell{
-      min-height:auto;
+      min-height:190px;
       padding:18px;
     }
 
     .cell + .cell{
-      border-left:none;
-      border-top:1px solid var(--line);
+      border-left:1px solid var(--line);
+      border-top:none;
     }
 
     .label{
@@ -446,6 +447,31 @@
     .source{
       margin-top:10px;
       font-size:10px;
+    }
+  }
+
+
+  @media (max-width:620px){
+    .card-head{
+      grid-template-columns:1fr;
+      gap:10px;
+    }
+
+    .badge{
+      justify-self:start;
+    }
+
+    .grid{
+      grid-template-columns:1fr;
+    }
+
+    .cell{
+      min-height:auto;
+    }
+
+    .cell + .cell{
+      border-left:none;
+      border-top:1px solid var(--line);
     }
   }
 
