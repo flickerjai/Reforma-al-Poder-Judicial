@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- VERSION: BARRA-MOVIL-CENTRADA-2026-08-20 -->
+<!-- VERSION: BARRA-MOVIL-CENTRADA-V2-900PX-2026-08-20 -->
 <html lang="es">
 <head>
 <meta charset="utf-8">
@@ -266,7 +266,7 @@
     line-height:1.35;
   }
 
-  @media (max-width:700px){
+  @media (max-width:900px){
     html,body{
       width:100%;
       max-width:100%;
@@ -334,13 +334,16 @@
     }
 
     .tabs{
-      display:flex;
+      display:flex !important;
+      flex-wrap:nowrap !important;
+      grid-template-columns:none !important;
       gap:8px;
       width:100%;
       overflow-x:auto;
       overflow-y:hidden;
       padding:2px 2px 12px;
       scroll-snap-type:x proximity;
+      -webkit-overflow-scrolling:touch;
     }
 
     .tab{
@@ -359,7 +362,7 @@
 
     .tab-topic,
     .tab-sep{
-      display:inline;
+      display:inline !important;
     }
 
     .scroll-btn{
