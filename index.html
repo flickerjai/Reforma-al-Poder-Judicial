@@ -307,41 +307,65 @@
       max-width:260px;
     }
 
-    .swipe-hint,
-    .scroll-btn,
-    .tabs-shell::after{
-      display:none !important;
+    .tabs-intro{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .swipe-hint{
+      display:block;
+      font-size:11px;
+      flex:0 0 auto;
     }
 
     .tabs-shell{
-      padding:0;
+      position:relative;
       width:100%;
+      padding:0 30px;
+    }
+
+    .tabs-shell::after{
+      display:block !important;
+      right:30px;
+      width:38px;
     }
 
     .tabs{
-      display:grid;
-      grid-template-columns:repeat(4,minmax(0,1fr));
-      gap:7px;
+      display:flex;
+      gap:8px;
       width:100%;
-      overflow:visible;
-      padding:0 0 14px;
+      overflow-x:auto;
+      overflow-y:hidden;
+      padding:2px 2px 12px;
+      scroll-snap-type:x proximity;
     }
 
     .tab{
-      width:100%;
-      min-width:0;
-      padding:10px 5px;
-      border-radius:10px;
+      flex:0 0 auto;
+      width:auto;
+      min-width:max-content;
+      padding:11px 15px;
+      border-radius:999px;
       font-size:13px;
       line-height:1;
       text-align:center;
-      overflow:hidden;
+      overflow:visible;
       white-space:nowrap;
+      scroll-snap-align:center;
     }
 
     .tab-topic,
     .tab-sep{
-      display:none;
+      display:inline;
+    }
+
+    .scroll-btn{
+      display:grid !important;
+      width:27px;
+      height:27px;
+      font-size:20px;
     }
 
     .card{
@@ -424,7 +448,8 @@
   @media (max-width:380px){
     h1{font-size:29px}
     .deck{font-size:16px}
-    .tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .tab{font-size:12px;padding:10px 13px}
+    .swipe-hint{font-size:10px}
   }
 </style>
 </head>
@@ -592,7 +617,7 @@ function render(index){
 
   // Centra automáticamente el proyecto seleccionado dentro del carrusel.
   const activeTab = document.querySelector(".tab.active");
-  if (activeTab && window.innerWidth > 700) {
+  if (activeTab) {
     requestAnimationFrame(() => {
       activeTab.scrollIntoView({
         behavior: "smooth",
